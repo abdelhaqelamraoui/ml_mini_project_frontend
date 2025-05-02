@@ -37,7 +37,7 @@ export default function HomePage() {
                   key={todo.id}
                   className="p-4 bg-gray-100 rounded shadow-sm flex justify-between items-center"
                >
-                  <span>{todo.title}</span>
+                  <span className="bg-primary">{todo.title}</span>
                   <span
                      className={`text-sm ${
                         todo.completed ? "text-green-600" : "text-red-600"

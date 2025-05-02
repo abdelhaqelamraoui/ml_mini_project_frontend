@@ -1,6 +1,7 @@
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import { Header } from "./components/header";
 import "./globals.css";
 
 export default async function LocaleLayout({
@@ -19,7 +20,9 @@ export default async function LocaleLayout({
    return (
       <html lang={locale}>
          <body>
-            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+            <NextIntlClientProvider>
+               <Header locale={locale} />
+                  {children}</NextIntlClientProvider>
          </body>
       </html>
    );

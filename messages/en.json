@@ -1,6 +1,15 @@
 {
+   "Header": {
+      "home": "Home",
+      "about": "About"
+   },
    "HomePage": {
       "title": "Hello world!",
       "about": "Go to the about page"
-   }
+   },
+   "AboutPage": {
+      "about-text": "About"
+   },
+    "About": "About",
+  "Theme": "Theme"
 }

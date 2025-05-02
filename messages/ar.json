@@ -1,6 +1,16 @@
 {
-   "HomePage": {
-      "title": "السلام علسكم",
-      "about": "الانتقال الى حول"
-   }
+  "Header": {
+    "home": "الرئيسية",
+    "about": "حول"
+  },
+  "HomePage": {
+    "title": "مرحبًا بالعالم!",
+    "about": "انتقل إلى صفحة حول"
+  },
+  "AboutPage": {
+    "about-text": "حول"
+  },
+
+  "About": "حول",
+  "Theme": "ثيم"
 }
