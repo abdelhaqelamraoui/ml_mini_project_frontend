@@ -6,10 +6,37 @@
   },
   "HomePage": {
     "title": "Bonjour le monde!",
-    "about": "Allez à la page À propos"
+    "about": "Aller à la page à propos"
   },
   "AboutPage": {
-    "about-text": "À propos"
+    "title": "À propos du Prédicteur de Prix des Voitures Marocaines",
+    "subtitle": "Votre outil fiable pour des prédictions précises des prix des voitures au Maroc",
+    "whatWeDo": {
+      "title": "Ce que nous faisons",
+      "description": "Nous fournissons une solution avancée basée sur l'apprentissage automatique pour vous aider à estimer la valeur marchande des voitures au Maroc. Notre système prend en compte divers facteurs pour vous donner la prédiction de prix la plus précise possible.",
+      "features": {
+        "1": "Prédictions de prix précises basées sur une analyse complète des données",
+        "2": "Prise en compte de multiples facteurs incluant la marque, le modèle, l'année et l'état",
+        "3": "Interface conviviale pour une estimation facile des prix"
+      }
+    },
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "steps": {
+        "1": {
+          "title": "Entrez les détails de la voiture",
+          "description": "Remplissez les spécifications de votre voiture incluant la marque, le modèle, l'année et l'état"
+        },
+        "2": {
+          "title": "Ajoutez les équipements",
+          "description": "Sélectionnez les équipements et les fonctionnalités de votre voiture"
+        },
+        "3": {
+          "title": "Obtenez la prédiction",
+          "description": "Recevez une estimation de prix précise basée sur notre algorithme avancé"
+        }
+      }
+    }
   },
   "About": "À propos",
   "Index": {
@@ -70,6 +97,5 @@
       "vitres_electriques": "Vitres Électriques"
     }
   },
-    "language": "Langue"
-
+  "language": "Langue"
 }

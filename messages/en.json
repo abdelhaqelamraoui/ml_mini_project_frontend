@@ -9,7 +9,34 @@
       "about": "Go to the about page"
    },
    "AboutPage": {
-      "about-text": "About"
+      "title": "About Moroccan Car Price Predictor",
+      "subtitle": "Your trusted tool for accurate car price predictions in Morocco",
+      "whatWeDo": {
+         "title": "What We Do",
+         "description": "We provide an advanced machine learning-based solution to help you estimate the market value of cars in Morocco. Our system takes into account various factors to give you the most accurate price prediction possible.",
+         "features": {
+            "1": "Accurate price predictions based on comprehensive data analysis",
+            "2": "Consideration of multiple factors including brand, model, year, and condition",
+            "3": "User-friendly interface for easy price estimation"
+         }
+      },
+      "howItWorks": {
+         "title": "How It Works",
+         "steps": {
+            "1": {
+               "title": "Enter Car Details",
+               "description": "Fill in your car's specifications including brand, model, year, and condition"
+            },
+            "2": {
+               "title": "Add Features",
+               "description": "Select the equipment and features your car has"
+            },
+            "3": {
+               "title": "Get Prediction",
+               "description": "Receive an accurate price estimate based on our advanced algorithm"
+            }
+         }
+      }
    },
     "About": "About",
     "Index": {
