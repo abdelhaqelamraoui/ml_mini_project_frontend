@@ -2,9 +2,10 @@
 import { capitalize } from '@/lib/utils'
 import Link from 'next/link'
 import { usePathname, useSelectedLayoutSegments } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import { FiGlobe } from 'react-icons/fi'
 import Button from './button'
+import { useTranslations } from 'next-intl'
 
 const LangSwitcher: React.FC = () => {
   interface Option {
@@ -13,6 +14,7 @@ const LangSwitcher: React.FC = () => {
   }
   const pathname = usePathname()
   const urlSegments = useSelectedLayoutSegments()
+  const t = useTranslations()
 
   const [isOptionsExpanded, setIsOptionsExpanded] = useState(false)
   const options: Option[] = [
@@ -30,11 +32,11 @@ const LangSwitcher: React.FC = () => {
           onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
           onBlur={() => setIsOptionsExpanded(false)}
         >
-          Language
+          {t('language')}
           <FiGlobe />
         </Button>
         {isOptionsExpanded && (
-          <div className='absolute right-0 mt-2 w-full origin-top-right rounded-md bg-dropdown shadow-lg'>
+          <div className='absolute mt-2 w-full origin-top-right rounded-md bg-dropdown shadow-lg z-50 bg-primary'>
             <div
               className='py-1'
               role='menu'

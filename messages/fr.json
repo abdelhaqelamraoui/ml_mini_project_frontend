@@ -1,7 +1,8 @@
 {
   "Header": {
     "home": "Accueil",
-    "about": "À propos"
+    "about": "À propos",
+    "predict": "Prédire"
   },
   "HomePage": {
     "title": "Bonjour le monde!",
@@ -51,12 +52,12 @@
     },
     "equipment": {
       "premiere_main": "Premier Propriétaire",
-      "abs": "Système Anti-blocage des Freins (ABS)",
+      "abs": "ABS",
       "airbags": "Airbags",
       "cd_mp3_bluetooth": "CD/MP3/Bluetooth",
       "camera_de_recul": "Caméra de Recul",
       "climatisation": "Climatisation",
-      "esp": "Programme Électronique de Stabilité (ESP)",
+      "esp": "ESP",
       "jantes_aluminium": "Jantes Aluminium",
       "limiteur_de_vitesse": "Limiteur de Vitesse",
       "ordinateur_de_bord": "Ordinateur de Bord",
@@ -65,8 +66,10 @@
       "sieges_cuir": "Sièges en Cuir",
       "systeme_de_navigation_gps": "Système de Navigation GPS",
       "toit_ouvrant": "Toit Ouvrant",
-      "verrouillage_centralise_a_distance": "Verrouillage Centralisé à Distance",
+      "verrouillage_centralise_a_distance": "Verrouillage à Distance",
       "vitres_electriques": "Vitres Électriques"
     }
-  }
+  },
+    "language": "Langue"
+
 }

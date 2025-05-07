@@ -62,7 +62,7 @@ export default function PredictPage() {
     boite_de_vitesses: "Manuelle",
     type_de_carburant: "Essence",
     puissance_fiscale: 6,
-    nombre_de_portes: 5,
+    nombre_de_portes: 4,
     kilometrage: 45000,
     abs: true,
     airbags: true,
@@ -122,10 +122,10 @@ export default function PredictPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Form Section */}
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">{t("title")}</h1>
+          <div className="lg:col-span-2">
+            {/* <h1 className="text-3xl font-bold text-gray-900 mb-8">{t("title")}</h1> */}
             
             <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-xl p-8 space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -141,7 +141,7 @@ export default function PredictPage() {
                         setSelectedMarqueId(id);
                         handleInputChange(e);
                       }}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all bg-white appearance-none"
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all bg-white appearance-none"
                       required
                     >
                       <option value="">{t("fields.marque")}</option>
@@ -167,7 +167,7 @@ export default function PredictPage() {
                       name="modele"
                       value={formData.modele}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all disabled:bg-gray-50 disabled:border-gray-200 appearance-none"
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all disabled:bg-gray-50 disabled:border-gray-200 appearance-none"
                       required
                       disabled={!selectedMarqueId}
                     >
@@ -194,7 +194,7 @@ export default function PredictPage() {
                       name="annee_modele"
                       value={formData.annee_modele}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
                       required
                     >
                       {Array.from({ length: 25 }, (_, i) => new Date().getFullYear() - i).map((year) => (
@@ -219,7 +219,7 @@ export default function PredictPage() {
                     name="origine"
                     value={formData.origine}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
                     required
                   />
                 </div>
@@ -231,7 +231,7 @@ export default function PredictPage() {
                       name="etat"
                       value={formData.etat}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
                       required
                     >
                       <option value="Très bon">{t("conditions.tresBon")}</option>
@@ -253,7 +253,7 @@ export default function PredictPage() {
                       name="boite_de_vitesses"
                       value={formData.boite_de_vitesses}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
                       required
                     >
                       <option value="Manuelle">{t("transmission.manuelle")}</option>
@@ -274,7 +274,7 @@ export default function PredictPage() {
                       name="type_de_carburant"
                       value={formData.type_de_carburant}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
                       required
                     >
                       <option value="Essence">{t("fuelTypes.essence")}</option>
@@ -297,21 +297,32 @@ export default function PredictPage() {
                     name="puissance_fiscale"
                     value={formData.puissance_fiscale}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
                     required
                   />
                 </div>
 
                 <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.nombre_de_portes")}</label>
-                  <input
-                    type="number"
-                    name="nombre_de_portes"
-                    value={formData.nombre_de_portes}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
-                    required
-                  />
+                  <div className="relative">
+                    <select
+                      name="nombre_de_portes"
+                      value={formData.nombre_de_portes}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      required
+                    >
+                      <option value="4" selected>4</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="5">5</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="relative">
@@ -321,7 +332,7 @@ export default function PredictPage() {
                     name="kilometrage"
                     value={formData.kilometrage}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
                     required
                   />
                 </div>
@@ -329,12 +340,12 @@ export default function PredictPage() {
 
               {/* Checkboxes Section */}
               <div className="mt-8">
-                <h3 className="text-lg font-medium text-gray-900 mb-6">{t("equipmentTitle")}</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <h3 className="text-lg font-medium text-gray-900 mb-5">{t("equipmentTitle")}</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
                   {Object.entries(formData)
                     .filter(([key, value]) => typeof value === 'boolean')
                     .map(([key, value]) => (
-                      <div key={key} className="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                      <div key={key} className="flex items-center space-x-3  px-0 py-3 rounded-md hover:bg-gray-50 transition-colors">
                         <input
                           type="checkbox"
                           id={key}
@@ -355,7 +366,7 @@ export default function PredictPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg text-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:hover:bg-blue-600 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full bg-blue-600 text-white py-2 px-6 rounded-md text-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:hover:bg-blue-600 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {loading ? t("calculating") : t("calculateButton")}
                 </button>
@@ -364,19 +375,17 @@ export default function PredictPage() {
           </div>
 
           {/* Price Prediction Section */}
-          {prediction && (
-            <div className="lg:w-96">
-              <div className="sticky top-8 bg-white rounded-xl shadow-xl p-8">
-                <h3 className="text-lg font-medium text-gray-900 mb-2">{t("estimatedPrice")}</h3>
-                <p className="text-4xl font-bold text-blue-600 mb-4">
-                  {prediction.prix.toLocaleString()} MAD
-                </p>
-                <div className="text-sm text-gray-500">
-                  <p>{t("priceNote")}</p>
-                </div>
+          <div className="lg:col-span-1">
+            <div className="sticky top-8 bg-white rounded-xl shadow-xl p-8">
+              <h3 className="text-lg font-medium text-gray-900 mb-2">{t("estimatedPrice")}</h3>
+              <p className="text-4xl font-bold text-blue-600 mb-4">
+                {prediction && prediction.prix.toLocaleString()} MAD
+              </p>
+              <div className="text-sm text-gray-500">
+                <p>{t("priceNote")}</p>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 {
    "Header": {
       "home": "Home",
-      "about": "About"
+      "about": "About",
+      "predict": "Predict"
    },
    "HomePage": {
       "title": "Hello world!",
@@ -51,12 +52,12 @@
       },
       "equipment": {
         "premiere_main": "First Owner",
-        "abs": "Anti-lock Braking System (ABS)",
+        "abs": "ABS",
         "airbags": "Airbags",
         "cd_mp3_bluetooth": "CD/MP3/Bluetooth",
         "camera_de_recul": "Backup Camera",
         "climatisation": "Air Conditioning",
-        "esp": "Electronic Stability Program (ESP)",
+        "esp": "ESP",
         "jantes_aluminium": "Alloy Wheels",
         "limiteur_de_vitesse": "Speed Limiter",
         "ordinateur_de_bord": "On-board Computer",
@@ -68,5 +69,6 @@
         "verrouillage_centralise_a_distance": "Remote Central Locking",
         "vitres_electriques": "Power Windows"
       }
-    }
+    },
+    "language": "Language"
 }

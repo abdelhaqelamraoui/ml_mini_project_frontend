@@ -8,33 +8,59 @@ import LangSwitcher from "./lang-switcher";
 interface Props {
    locale: string;
 }
+
 export const Header: FC<Props> = ({ locale }) => {
    const t = useTranslations("");
    return (
-      <header className="bg-primary mx-auto flex max-w-screen-2xl flex-row items-center justify-between py-1 px-12 bg-primary">
-         <Link lang={locale} href="/">
-            <div className="flex flex-row items-center">
-               <div className="mb-2 h-14 w-14">
-                  <Image
-                     src="/mcp.png"
-                     alt="Logo"
-                     width={80}
-                     height={80}
-                     className="h-full object-contain"
-                     priority
-                  />
-               </div>
-               <strong className="mx-2 select-none">Morrocan Price Predictor</strong>
-            </div>
-         </Link>
-         <div className="flex flex-row items-center gap-3">
-            <nav className="mr-10 inline-flex gap-5">
-               <Link lang={locale} href={`/about`}>
-                  {t("About")}
+      <header className="bg-white border-b border-gray-200 shadow-sm">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+               {/* Logo and Brand */}
+               <Link lang={locale} href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                  <div className="relative h-18 w-18">
+                     <Image
+                        src="/mcp.png"
+                        alt="Logo"
+                        fill
+                        className="object-contain"
+                        priority
+                     />
+                  </div>
+                  <div className="flex flex-col">
+                     <span className="text-xl font-bold text-gray-400">Moroccan Car Price-Predictor</span>
+                  </div>
                </Link>
-            </nav>
-            <LangSwitcher />
-            
+
+               {/* Navigation and Language Switcher */}
+               <div className="flex items-center space-x-8">
+                  <nav className="hidden md:flex items-center space-x-6">
+                     <Link 
+                        lang={locale} 
+                        href="/"
+                        className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                     >
+                        {t("Header.home")}
+                     </Link>
+                     <Link 
+                        lang={locale} 
+                        href="/predict"
+                        className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                     >
+                        {t("Header.predict")}
+                     </Link>
+                     <Link 
+                        lang={locale} 
+                        href="/about"
+                        className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                     >
+                        {t("Header.about")}
+                     </Link>
+                  </nav>
+                  <div className="flex items-center space-x-4">
+                     <LangSwitcher />
+                  </div>
+               </div>
+            </div>
          </div>
       </header>
    );

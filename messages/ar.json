@@ -1,7 +1,8 @@
 {
   "Header": {
     "home": "الرئيسية",
-    "about": "حول"
+    "about": "حول",
+    "predict": "توقع"
   },
   "HomePage": {
     "title": "مرحبًا بالعالم!",
@@ -70,5 +71,7 @@
       "verrouillage_centralise_a_distance": "قفل مركزي عن بعد",
       "vitres_electriques": "نوافذ كهربائية"
     }
-  }
+  },
+    "language": "اللغة"
+
 }
