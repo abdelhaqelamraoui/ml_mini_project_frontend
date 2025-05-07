@@ -3,6 +3,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { Header } from "./components/header";
 import "./globals.css";
+import { Footer } from "./components/footer";
 
 export default async function LocaleLayout({
    children,
@@ -22,7 +23,8 @@ export default async function LocaleLayout({
          <body>
             <NextIntlClientProvider>
                <Header locale={locale} />
-                  {children}</NextIntlClientProvider>
+               {children}</NextIntlClientProvider>
+            <Footer />
          </body>
       </html>
    );
