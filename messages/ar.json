@@ -11,5 +11,64 @@
     "about-text": "حول"
   },
 
-  "About": "حول"
+  "About": "حول",
+
+  "Index": {
+    "title": "مرحباً"
+  },
+  "PredictPage": {
+    "title": "تقدير سعر السيارة",
+    "estimatedPrice": "السعر المقدر",
+    "priceNote": "هذا تقدير بناءً على المواصفات المقدمة. قد يختلف السعر الفعلي حسب ظروف السوق وعوامل أخرى.",
+    "calculateButton": "حساب السعر",
+    "calculating": "جاري الحساب...",
+    "equipmentTitle": "المعدات والمميزات",
+    "fields": {
+      "marque": "العلامة التجارية",
+      "modele": "الموديل",
+      "annee_modele": "سنة الصنع",
+      "origine": "بلد المنشأ",
+      "premiere_main": "المالك الأول",
+      "etat": "الحالة",
+      "boite_de_vitesses": "نوع ناقل الحركة",
+      "type_de_carburant": "نوع الوقود",
+      "puissance_fiscale": "القوة الجبائية (حصان)",
+      "nombre_de_portes": "عدد الأبواب",
+      "kilometrage": "المسافة المقطوعة (كم)"
+    },
+    "conditions": {
+      "tresBon": "ممتازة",
+      "bon": "جيدة",
+      "moyen": "متوسطة"
+    },
+    "transmission": {
+      "manuelle": "يدوي",
+      "automatique": "أوتوماتيك"
+    },
+    "fuelTypes": {
+      "essence": "بنزين",
+      "diesel": "ديزل",
+      "hybride": "هجين",
+      "electrique": "كهربائي"
+    },
+    "equipment": {
+      "premiere_main": "المالك الأول",
+      "abs": "نظام الفرامل المانع للانغلاق (ABS)",
+      "airbags": "وسائد هوائية",
+      "cd_mp3_bluetooth": "مشغل CD/MP3/بلوتوث",
+      "camera_de_recul": "كاميرا خلفية",
+      "climatisation": "تكييف هواء",
+      "esp": "برنامج الثبات الإلكتروني (ESP)",
+      "jantes_aluminium": "جنوط ألومنيوم",
+      "limiteur_de_vitesse": "محدد السرعة",
+      "ordinateur_de_bord": "كمبيوتر رحلات",
+      "radar_de_recul": "حساسات ركن السيارة",
+      "regulateur_de_vitesse": "مثبت السرعة",
+      "sieges_cuir": "مقاعد جلد",
+      "systeme_de_navigation_gps": "نظام ملاحة GPS",
+      "toit_ouvrant": "فتحة سقف",
+      "verrouillage_centralise_a_distance": "قفل مركزي عن بعد",
+      "vitres_electriques": "نوافذ كهربائية"
+    }
+  }
 }

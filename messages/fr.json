@@ -10,6 +10,63 @@
   "AboutPage": {
     "about-text": "À propos"
   },
-
-   "About": "À propos"
+  "About": "À propos",
+  "Index": {
+    "title": "Bienvenue"
+  },
+  "PredictPage": {
+    "title": "Prédiction du Prix de Voiture",
+    "estimatedPrice": "Prix Estimé",
+    "priceNote": "Ceci est une estimation basée sur les spécifications fournies. Le prix réel peut varier selon les conditions du marché et d'autres facteurs.",
+    "calculateButton": "Calculer le Prix",
+    "calculating": "Calcul en cours...",
+    "equipmentTitle": "Équipements et Options",
+    "fields": {
+      "marque": "Marque",
+      "modele": "Modèle",
+      "annee_modele": "Année Modèle",
+      "origine": "Pays d'Origine",
+      "premiere_main": "Premier Propriétaire",
+      "etat": "État",
+      "boite_de_vitesses": "Type de Boîte",
+      "type_de_carburant": "Type de Carburant",
+      "puissance_fiscale": "Puissance Fiscale (CV)",
+      "nombre_de_portes": "Nombre de Portes",
+      "kilometrage": "Kilométrage (km)"
+    },
+    "conditions": {
+      "tresBon": "Très Bon",
+      "bon": "Bon",
+      "moyen": "Moyen"
+    },
+    "transmission": {
+      "manuelle": "Manuelle",
+      "automatique": "Automatique"
+    },
+    "fuelTypes": {
+      "essence": "Essence",
+      "diesel": "Diesel",
+      "hybride": "Hybride",
+      "electrique": "Électrique"
+    },
+    "equipment": {
+      "premiere_main": "Premier Propriétaire",
+      "abs": "Système Anti-blocage des Freins (ABS)",
+      "airbags": "Airbags",
+      "cd_mp3_bluetooth": "CD/MP3/Bluetooth",
+      "camera_de_recul": "Caméra de Recul",
+      "climatisation": "Climatisation",
+      "esp": "Programme Électronique de Stabilité (ESP)",
+      "jantes_aluminium": "Jantes Aluminium",
+      "limiteur_de_vitesse": "Limiteur de Vitesse",
+      "ordinateur_de_bord": "Ordinateur de Bord",
+      "radar_de_recul": "Capteurs de Stationnement",
+      "regulateur_de_vitesse": "Régulateur de Vitesse",
+      "sieges_cuir": "Sièges en Cuir",
+      "systeme_de_navigation_gps": "Système de Navigation GPS",
+      "toit_ouvrant": "Toit Ouvrant",
+      "verrouillage_centralise_a_distance": "Verrouillage Centralisé à Distance",
+      "vitres_electriques": "Vitres Électriques"
+    }
+  }
 }

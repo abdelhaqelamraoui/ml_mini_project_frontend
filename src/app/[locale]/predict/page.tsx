@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 
 interface Marque {
   id: number;
-  name: string;
+  nom: string;
 }
 
 interface Modele {
   id: number;
-  name: string;
+  nom: string;
 }
 
 interface CarFormData {
@@ -48,7 +48,7 @@ export default function PredictPage() {
   const t = useTranslations("PredictPage");
   const [marques, setMarques] = useState<Marque[]>([]);
   const [modeles, setModeles] = useState<Modele[]>([]);
-  const [selectedMarqueId, setSelectedMarqueId] = useState<number>();
+  const [selectedMarqueId, setSelectedMarqueId] = useState<number | undefined>();
   const [prediction, setPrediction] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -83,10 +83,8 @@ export default function PredictPage() {
   });
 
   useEffect(() => {
-    // Fetch marques
     api.get("/marques")
       .then((res) => {
-        // console.log(res.data);        
         setMarques(res.data)
       })
       .catch((error) => console.error("Error fetching marques:", error));
@@ -94,7 +92,6 @@ export default function PredictPage() {
 
   useEffect(() => {
     if (selectedMarqueId) {
-      // Fetch modeles for selected marque
       api.get(`/marques/${selectedMarqueId}/modeles`)
         .then((res) => setModeles(res.data))
         .catch((error) => console.error("Error fetching modeles:", error));
@@ -123,208 +120,264 @@ export default function PredictPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Car Price Prediction</h1>
-        
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Marque Selection */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Marque</label>
-              <select
-                name="marque"
-                value={formData.marque}
-                onChange={(e) => {
-                  setSelectedMarqueId(e.target.value);
-                  handleInputChange(e);
-                }}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              >
-                <option value="">Select a marque</option>
-                {marques.map((marque) => (
-                  <option key={marque.id} value={marque.id}>
-                    {marque.marque}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Modele Selection */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Modele</label>
-              <select
-                name="modele"
-                value={formData.modele}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-                disabled={!selectedMarqueId}
-              >
-                <option value="">Select a modele</option>
-                {modeles.map((modele, i) => (
-                  <option key={i} value={modele}>
-                    {modele}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Year Selection */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Année Modèle</label>
-              <select
-                name="annee_modele"
-                value={formData.annee_modele}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              >
-                {Array.from({ length: 25 }, (_, i) => new Date().getFullYear() - i).map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Basic Information */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Origine</label>
-              <input
-                type="text"
-                name="origine"
-                value={formData.origine}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">État</label>
-              <select
-                name="etat"
-                value={formData.etat}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              >
-                <option value="Très bon">Très bon</option>
-                <option value="Bon">Bon</option>
-                <option value="Moyen">Moyen</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Boîte de vitesses</label>
-              <select
-                name="boite_de_vitesses"
-                value={formData.boite_de_vitesses}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              >
-                <option value="Manuelle">Manuelle</option>
-                <option value="Automatique">Automatique</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Type de carburant</label>
-              <select
-                name="type_de_carburant"
-                value={formData.type_de_carburant}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              >
-                <option value="Essence">Essence</option>
-                <option value="Diesel">Diesel</option>
-                <option value="Hybride">Hybride</option>
-                <option value="Électrique">Électrique</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Puissance fiscale</label>
-              <input
-                type="number"
-                name="puissance_fiscale"
-                value={formData.puissance_fiscale}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Nombre de portes</label>
-              <input
-                type="number"
-                name="nombre_de_portes"
-                value={formData.nombre_de_portes}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Kilométrage</label>
-              <input
-                type="number"
-                name="kilometrage"
-                value={formData.kilometrage}
-                onChange={handleInputChange}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                required
-              />
-            </div>
-          </div>
-
-          {/* Checkboxes Section */}
-          <div className="mt-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Équipements</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {Object.entries(formData)
-                .filter(([key, value]) => typeof value === 'boolean')
-                .map(([key, value]) => (
-                  <div key={key} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={key}
-                      name={key}
-                      checked={value}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor={key} className="ml-2 block text-sm text-gray-700">
-                      {key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-                    </label>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Form Section */}
+          <div className="flex-1">
+            <h1 className="text-3xl font-bold text-gray-900 mb-8">{t("title")}</h1>
+            
+            <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-xl p-8 space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Marque Selection */}
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.marque")}</label>
+                  <div className="relative">
+                    <select
+                      name="marque"
+                      value={formData.marque}
+                      onChange={(e) => {
+                        const id = parseInt(e.target.value);
+                        setSelectedMarqueId(id);
+                        handleInputChange(e);
+                      }}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all bg-white appearance-none"
+                      required
+                    >
+                      <option value="">{t("fields.marque")}</option>
+                      {marques.map((marque) => (
+                        <option key={marque.id} value={marque.id}>
+                          {marque.nom}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
                   </div>
-                ))}
-            </div>
+                </div>
+
+                {/* Modele Selection */}
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.modele")}</label>
+                  <div className="relative">
+                    <select
+                      name="modele"
+                      value={formData.modele}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all disabled:bg-gray-50 disabled:border-gray-200 appearance-none"
+                      required
+                      disabled={!selectedMarqueId}
+                    >
+                      <option value="">{t("fields.modele")}</option>
+                      {modeles.map((modele) => (
+                        <option key={modele.id} value={modele.nom}>
+                          {modele.nom}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Year Selection */}
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.annee_modele")}</label>
+                  <div className="relative">
+                    <select
+                      name="annee_modele"
+                      value={formData.annee_modele}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      required
+                    >
+                      {Array.from({ length: 25 }, (_, i) => new Date().getFullYear() - i).map((year) => (
+                        <option key={year} value={year}>
+                          {year}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Basic Information */}
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.origine")}</label>
+                  <input
+                    type="text"
+                    name="origine"
+                    value={formData.origine}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    required
+                  />
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.etat")}</label>
+                  <div className="relative">
+                    <select
+                      name="etat"
+                      value={formData.etat}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      required
+                    >
+                      <option value="Très bon">{t("conditions.tresBon")}</option>
+                      <option value="Bon">{t("conditions.bon")}</option>
+                      <option value="Moyen">{t("conditions.moyen")}</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.boite_de_vitesses")}</label>
+                  <div className="relative">
+                    <select
+                      name="boite_de_vitesses"
+                      value={formData.boite_de_vitesses}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      required
+                    >
+                      <option value="Manuelle">{t("transmission.manuelle")}</option>
+                      <option value="Automatique">{t("transmission.automatique")}</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.type_de_carburant")}</label>
+                  <div className="relative">
+                    <select
+                      name="type_de_carburant"
+                      value={formData.type_de_carburant}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
+                      required
+                    >
+                      <option value="Essence">{t("fuelTypes.essence")}</option>
+                      <option value="Diesel">{t("fuelTypes.diesel")}</option>
+                      <option value="Hybride">{t("fuelTypes.hybride")}</option>
+                      <option value="Électrique">{t("fuelTypes.electrique")}</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.puissance_fiscale")}</label>
+                  <input
+                    type="number"
+                    name="puissance_fiscale"
+                    value={formData.puissance_fiscale}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    required
+                  />
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.nombre_de_portes")}</label>
+                  <input
+                    type="number"
+                    name="nombre_de_portes"
+                    value={formData.nombre_de_portes}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    required
+                  />
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("fields.kilometrage")}</label>
+                  <input
+                    type="number"
+                    name="kilometrage"
+                    value={formData.kilometrage}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Checkboxes Section */}
+              <div className="mt-8">
+                <h3 className="text-lg font-medium text-gray-900 mb-6">{t("equipmentTitle")}</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {Object.entries(formData)
+                    .filter(([key, value]) => typeof value === 'boolean')
+                    .map(([key, value]) => (
+                      <div key={key} className="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <input
+                          type="checkbox"
+                          id={key}
+                          name={key}
+                          checked={value}
+                          onChange={handleInputChange}
+                          className="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 transition-colors"
+                        />
+                        <label htmlFor={key} className="text-sm text-gray-700 select-none">
+                          {t(`equipment.${key}`)}
+                        </label>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg text-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:hover:bg-blue-600 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {loading ? t("calculating") : t("calculateButton")}
+                </button>
+              </div>
+            </form>
           </div>
 
-          <div className="mt-8">
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-            >
-              {loading ? "Calculating..." : "Predict Price"}
-            </button>
-          </div>
-
-          {prediction !== null && (
-            <div className="mt-6 p-4 bg-green-50 rounded-md">
-              <h3 className="text-lg font-medium text-green-800">Estimated Price</h3>
-              <p className="text-2xl font-bold text-green-600">{prediction.prix.toLocaleString()} MAD</p>
+          {/* Price Prediction Section */}
+          {prediction && (
+            <div className="lg:w-96">
+              <div className="sticky top-8 bg-white rounded-xl shadow-xl p-8">
+                <h3 className="text-lg font-medium text-gray-900 mb-2">{t("estimatedPrice")}</h3>
+                <p className="text-4xl font-bold text-blue-600 mb-4">
+                  {prediction.prix.toLocaleString()} MAD
+                </p>
+                <div className="text-sm text-gray-500">
+                  <p>{t("priceNote")}</p>
+                </div>
+              </div>
             </div>
           )}
-        </form>
+        </div>
       </div>
     </div>
   );

@@ -10,5 +10,63 @@
    "AboutPage": {
       "about-text": "About"
    },
-    "About": "About"
+    "About": "About",
+    "Index": {
+      "title": "Welcome"
+    },
+    "PredictPage": {
+      "title": "Car Price Prediction",
+      "estimatedPrice": "Estimated Price",
+      "priceNote": "This is an estimated price based on the provided specifications. The actual price may vary depending on market conditions and other factors.",
+      "calculateButton": "Calculate Price",
+      "calculating": "Calculating...",
+      "equipmentTitle": "Equipment & Features",
+      "fields": {
+        "marque": "Brand",
+        "modele": "Model",
+        "annee_modele": "Model Year",
+        "origine": "Country of Origin",
+        "premiere_main": "First Owner",
+        "etat": "Condition",
+        "boite_de_vitesses": "Transmission Type",
+        "type_de_carburant": "Fuel Type",
+        "puissance_fiscale": "Fiscal Power (CV)",
+        "nombre_de_portes": "Number of Doors",
+        "kilometrage": "Mileage (km)"
+      },
+      "conditions": {
+        "tresBon": "Very Good",
+        "bon": "Good",
+        "moyen": "Average"
+      },
+      "transmission": {
+        "manuelle": "Manual",
+        "automatique": "Automatic"
+      },
+      "fuelTypes": {
+        "essence": "Gasoline",
+        "diesel": "Diesel",
+        "hybride": "Hybrid",
+        "electrique": "Electric"
+      },
+      "equipment": {
+        "premiere_main": "First Owner",
+        "abs": "Anti-lock Braking System (ABS)",
+        "airbags": "Airbags",
+        "cd_mp3_bluetooth": "CD/MP3/Bluetooth",
+        "camera_de_recul": "Backup Camera",
+        "climatisation": "Air Conditioning",
+        "esp": "Electronic Stability Program (ESP)",
+        "jantes_aluminium": "Alloy Wheels",
+        "limiteur_de_vitesse": "Speed Limiter",
+        "ordinateur_de_bord": "On-board Computer",
+        "radar_de_recul": "Parking Sensors",
+        "regulateur_de_vitesse": "Cruise Control",
+        "sieges_cuir": "Leather Seats",
+        "systeme_de_navigation_gps": "GPS Navigation System",
+        "toit_ouvrant": "Sunroof",
+        "verrouillage_centralise_a_distance": "Remote Central Locking",
+        "vitres_electriques": "Power Windows"
+      }
+    }
 }
