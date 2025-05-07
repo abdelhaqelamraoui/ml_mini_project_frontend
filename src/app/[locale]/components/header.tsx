@@ -27,7 +27,9 @@ export const Header: FC<Props> = ({ locale }) => {
                      />
                   </div>
                   <div className="flex flex-col">
-                     <span className="text-xl font-bold text-gray-400">Moroccan Car Price-Predictor</span>
+                     <span className="hidden sm:block text-xl font-bold text-gray-400">
+                        Moroccan Car Price-Predictor
+                     </span>
                   </div>
                </Link>
 

@@ -14,6 +14,10 @@ interface Modele {
   nom: string;
 }
 
+interface Prediction {
+  prix: number;
+}
+
 interface CarFormData {
   marque: string;
   modele: string;
@@ -49,7 +53,7 @@ export default function PredictPage() {
   const [marques, setMarques] = useState<Marque[]>([]);
   const [modeles, setModeles] = useState<Modele[]>([]);
   const [selectedMarqueId, setSelectedMarqueId] = useState<number | undefined>();
-  const [prediction, setPrediction] = useState<number | null>(null);
+  const [prediction, setPrediction] = useState<Prediction | null>(null);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState<CarFormData>({
@@ -312,7 +316,7 @@ export default function PredictPage() {
                       className="w-full px-4 py-2 rounded-md border-1 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all appearance-none"
                       required
                     >
-                      <option value="4" selected>4</option>
+                      <option value="4">4</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="5">5</option>
@@ -343,7 +347,7 @@ export default function PredictPage() {
                 <h3 className="text-lg font-medium text-gray-900 mb-5">{t("equipmentTitle")}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
                   {Object.entries(formData)
-                    .filter(([key, value]) => typeof value === 'boolean')
+                    .filter(([, value]) => typeof value === 'boolean')
                     .map(([key, value]) => (
                       <div key={key} className="flex items-center space-x-3  px-0 py-3 rounded-md hover:bg-gray-50 transition-colors">
                         <input
